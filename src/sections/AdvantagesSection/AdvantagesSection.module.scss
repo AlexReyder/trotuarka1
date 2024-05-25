@@ -1,0 +1,20 @@
+.Adventages {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: start;
+	justify-content: center;
+	gap: 8rem 4rem;
+	@media only screen and (max-width: 56.25rem) {
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem 2rem;
+	}
+	@media only screen and (max-width: 33.25rem) {
+		grid-template-columns: 1fr;
+		gap: 10rem;
+	}
+}
+
+.Icon {
+	width: 50px;
+	height: auto;
+}
