@@ -15,8 +15,8 @@ interface ArrowSliderProps {
 	SlideClass?: string
 	WrapperClass?: string
 	children: any
-	prevNameNavigation: string | string[]
-	nextNameNavigation: string | string[]
+	prevNameNavigation?: string | string[]
+	nextNameNavigation?: string | string[]
 	config?: any
 	coverflow?: boolean
 }

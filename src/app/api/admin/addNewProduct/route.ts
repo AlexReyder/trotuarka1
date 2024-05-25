@@ -11,6 +11,19 @@ export async function POST(request: Request) {
 	const slug = require('slug')
 	newProduct.slug = slug(newProduct.name)
 
+	newProduct.images.originals.forEach((orig: string[], i: number) => {
+		const newPath = orig[0].split('/').slice(0, -1).join('/') + `/${++i}.jpg`
+		fs.renameSync(orig[0], newPath)
+		orig[0] = newPath
+	})
+
+	newProduct.images.previews.forEach((prev: string[], i: number) => {
+		const newPath = prev[0].split('/').slice(0, -1).join('/') + `/${++i}.jpg`
+
+		fs.renameSync(prev[0], newPath)
+		prev[0] = newPath
+	})
+
 	const products = JSON.parse(AllProductsJSON)
 	products.push(newProduct)
 

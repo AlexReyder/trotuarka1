@@ -15,20 +15,29 @@ import cls from './page.module.scss'
 export default function Catalog() {
 	useEffect(() => {
 		const fetchData = async () => {
-			const products = await axios('/api/admin/getProducts', {
-				headers: {
-					'Cache-Control': 'no-cache',
-					Pragma: 'no-cache',
-					Expires: '0',
-				},
-			})
+			const products = await axios(
+				`${process.env.domainUrl}/api/admin/getProducts`,
+				{
+					headers: {
+						'Cache-Control': 'no-cache',
+						Pragma: 'no-cache',
+						Expires: '0',
+					},
+				}
+			)
 			setProducts(products.data)
 			setFilteredProduct(products.data)
 
-			const categories = await axios('/api/catalog/getCategories', {})
+			const categories = await axios(
+				`${process.env.domainUrl}/api/catalog/getCategories`,
+				{}
+			)
 			setCategories(categories.data)
 
-			const sizes = await axios('/api/catalog/getSizes', {})
+			const sizes = await axios(
+				`${process.env.domainUrl}/api/catalog/getSizes`,
+				{}
+			)
 			setSizes(sizes.data)
 		}
 		fetchData()

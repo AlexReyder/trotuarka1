@@ -14,7 +14,7 @@ export default async function Product({
 }) {
 	const { slug } = params
 	let data
-	await axios('http://localhost:3000/api/admin/getProducts', {
+	await axios(`${process.env.domainUrl}/api/admin/getProducts`, {
 		headers: {
 			'Cache-Control': 'no-cache',
 			Pragma: 'no-cache',

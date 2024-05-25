@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import fs from 'fs'
 import { NextResponse } from 'next/server'
 import { productItemI } from '../saveOrder/route'

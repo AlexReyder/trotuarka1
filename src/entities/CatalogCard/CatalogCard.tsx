@@ -26,10 +26,6 @@ const CatalogCard = ({ className, item }) => {
 		const prevPreview = [...imageList.preview]
 		prevPreview[i] = prev
 
-		console.log(mainPhoto)
-		console.log(indexOfMain)
-		console.log(prevPhoto)
-		console.log(indexOfPrev)
 		const set = {
 			main: item.images.previews[indexOfPrev][0],
 			preview: prevPreview,

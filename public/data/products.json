@@ -1,1 +1,31 @@
-[]
+[
+	{
+		"id": 1,
+		"type": "TP",
+		"name": "123",
+		"price": "123",
+		"priceColor": "123",
+		"description": "123",
+		"size": "123",
+		"pallet": "123",
+		"colors": {
+			"grey": true,
+			"black": false,
+			"yellow": true,
+			"red": false,
+			"brown": true,
+			"blue": false
+		},
+		"images": {
+			"originals": [
+				["public/img/products/TP/123/1.jpg"],
+				["public/img/products/TP/123/2.jpg"]
+			],
+			"previews": [
+				["public/img/products/TP/123/previews/1.jpg"],
+				["public/img/products/TP/123/previews/2.jpg"]
+			]
+		},
+		"slug": "123"
+	}
+]

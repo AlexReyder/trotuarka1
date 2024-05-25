@@ -14,13 +14,16 @@ import cls from './WorksSection.module.scss'
 export const WorksSection = () => {
 	useEffect(() => {
 		const fetchData = async () => {
-			const albums = await axios('/api/admin/gallery/getAlbums', {
-				headers: {
-					'Cache-Control': 'no-cache',
-					Pragma: 'no-cache',
-					Expires: '0',
-				},
-			})
+			const albums = await axios(
+				`${process.env.domainUrl}/api/admin/gallery/getAlbums`,
+				{
+					headers: {
+						'Cache-Control': 'no-cache',
+						Pragma: 'no-cache',
+						Expires: '0',
+					},
+				}
+			)
 			setData(albums.data)
 		}
 		fetchData()

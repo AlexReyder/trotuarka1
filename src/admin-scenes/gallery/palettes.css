@@ -1,7 +1,10 @@
 .palette {
 	display: grid;
-	grid-template-columns: 30px 310px 60px;
+	grid-template-columns: 30px 80% 1fr;
 	align-items: center;
+	@media only screen and (max-width: 37.5rem) {
+		/* display: flex; */
+	}
 }
 
 .palette__container {

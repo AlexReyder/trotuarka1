@@ -283,6 +283,7 @@ const EditPalettesModal = ({
 			previews: [],
 		})
 		setInnerId(1)
+		setDeletedImages([])
 	}
 
 	return (

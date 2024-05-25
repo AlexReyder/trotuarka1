@@ -59,6 +59,7 @@ const AddingPalettesModal = ({
 		previews: [],
 	})
 	const [innerId, setInnerId] = useState(1)
+	const [deletedImages, setDeletedImages] = useState<string[]>([])
 
 	const [clearOutputData, activateClearOutputData] = useState(false)
 
@@ -114,6 +115,10 @@ const AddingPalettesModal = ({
 	}
 
 	const handleRemoveProductImage = (i: number) => {
+		deletedImages.push(
+			productImages.originals[i][0],
+			productImages.previews[i][0]
+		)
 		productImages.originals.splice(i, 1)
 		productImages.previews.splice(i, 1)
 		setInnerId(innerId - 1)
@@ -170,6 +175,21 @@ const AddingPalettesModal = ({
 			return
 		}
 
+		if (deletedImages.length !== 0) {
+			let formData = new FormData()
+			const deleted = deletedImages as unknown as string | Blob
+			formData.append('delete', JSON.stringify(deleted))
+			await axios
+				.post('/api/admin/removeFiles', formData, {
+					headers: {
+						'Content-Type': 'multipart/form-data',
+					},
+				})
+				.then(() => {
+					handleClose()
+				})
+		}
+
 		const data = {
 			id: productId,
 			type: productType,
@@ -224,6 +244,7 @@ const AddingPalettesModal = ({
 			previews: [],
 		})
 		setInnerId(1)
+		setDeletedImages([])
 	}
 
 	return (

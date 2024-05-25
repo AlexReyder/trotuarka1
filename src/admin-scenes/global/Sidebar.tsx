@@ -47,6 +47,9 @@ const SidebarEl = () => {
 	}
 	return (
 		<Box
+			className={`sidebar__wrapper ${
+				isCollapsed ? 'sidebar--collapsed' : null
+			}`}
 			sx={{
 				'& .pro-sidebar-inner': {
 					background: `${colors.primary[400]}!important`,
@@ -65,7 +68,11 @@ const SidebarEl = () => {
 				},
 			}}
 		>
-			<Sidebar collapsed={isCollapsed} width='300px'>
+			<Sidebar
+				collapsed={isCollapsed}
+				width='300px'
+				className={`sidebar ${isCollapsed ? 'sidebar--collapsed' : null}`}
+			>
 				<Menu className='sidebar--exit'>
 					<MenuItem
 						onClick={() => setIsCollapsed(!isCollapsed)}
@@ -74,6 +81,7 @@ const SidebarEl = () => {
 							margin: '10px 0 20px 0',
 							color: colors.grey[100],
 						}}
+						className={`${isCollapsed ? 'sidebar__icon' : ''}`}
 					>
 						{!isCollapsed && (
 							<Box
@@ -91,8 +99,9 @@ const SidebarEl = () => {
 							</Box>
 						)}
 					</MenuItem>
+
 					{!isCollapsed && (
-						<Box mb='25px'>
+						<Box mb='25px' className='sidebar__admin-title'>
 							<Box display='flex' justifyContent='center' alignItems='center'>
 								<img
 									alt='profile-user'
@@ -112,12 +121,14 @@ const SidebarEl = () => {
 								>
 									Администратор
 								</Typography>
-								{/* <Typography variant = 'h5' color = {colors.greenAccent[500]} >VP Fancy Admin</Typography> */}
 							</Box>
 						</Box>
 					)}
 
-					<Box paddingLeft={isCollapsed ? undefined : '10%'}>
+					<Box
+						paddingLeft={isCollapsed ? undefined : '10%'}
+						className='sidebar__items'
+					>
 						<Item
 							title='Продукция'
 							to='/admin/add'
@@ -149,29 +160,14 @@ const SidebarEl = () => {
 							selected={selected}
 							setSelected={setSelected}
 						/>
-						{/* <Item title = 'Invoices Balances' to = '/invoices' icon = {<ReceiptOutlinedIcon/>} selected = {selected} setSelected = {setSelected} /> */}
-						{/* <Typography variant = 'h6' color = {colors.grey[300]} sx = {{m:'15px 0 5px 20px',}}>Pages</Typography> */}
-						{/* <Item title = 'Профиль' to = '/form' icon = {<PersonOutlinedIcon/>} selected = {selected} setSelected = {setSelected} /> */}
 
-						{/* <Item title = 'FAQ' to = '/faq' icon = {<HelpOutlinedIcon/>} selected = {selected} setSelected = {setSelected} />
-                        <Typography variant = 'h6' color = {colors.grey[300]} sx = {{m:'15px 0 5px 20px',}}>Charts</Typography>
-                        <Item title = 'Bar Chart' to = '/bar' icon = {<BarChartOutlinedIcon/>} selected = {selected} setSelected = {setSelected} />
-                        <Item title = 'Pie Chart' to = '/pie' icon = {<PieChartOutlineOutlinedIcon/>} selected = {selected} setSelected = {setSelected} />
-                        <Item title = 'Line Chart' to = '/line' icon = {<TimelineOutlinedIcon/>} selected = {selected} setSelected = {setSelected} />
-                        <Item title = 'Geography Chart' to = '/geography' icon = {<MapOutlinedIcon/>} selected = {selected} setSelected = {setSelected} /> */}
-					</Box>
-
-					<Box
-						paddingLeft={isCollapsed ? undefined : '10%'}
-						marginTop={isCollapsed ? 'auto' : 'auto'}
-					>
-						<MenuItem
-							style={{ color: colors.grey[100] }}
+						<Item
+							title='Выйти из панели'
+							to='/'
 							icon={<LogoutIcon />}
-							// onClick={handleLogOut}
-						>
-							<Typography>Выйти из панели</Typography>
-						</MenuItem>
+							selected={selected}
+							setSelected={setSelected}
+						/>
 					</Box>
 				</Menu>
 			</Sidebar>
